@@ -31,7 +31,7 @@ def leer_categoria():
             elif opcion == -99:
                 salir = False
                 
-    system('cls')
+   
             
             
             
@@ -79,7 +79,7 @@ def crear_receta():
                 
             elif opcion == -99:
                 salir = False
-    system('cls')
+    
                 
 
 def crear_categoria():
@@ -99,7 +99,7 @@ def crear_categoria():
     for i , carpeta in enumerate(subcarpetas):
         print(f'{i}.{carpeta.name}')
     
-    system('cls')    
+   
         
   
   
@@ -133,12 +133,14 @@ def eliminar_receta():
                 elimiar_archivo = carpeta_seleccionada/nombre_archivo
                 if elimiar_archivo.exists():
                     elimiar_archivo.unlink()
+                else:
+                    print('receta no encontrada')
                     for i in carpeta_seleccionada.glob('*.txt'):
                        print(i.name)
             
             elif opcion == -99:
                 salir = False
-    system('cls')
+   
                 
                         
                         
@@ -148,11 +150,16 @@ def eliminar_receta():
 def eliminar_categoria():
     ruta_base = Path('C:/Users/elver/Documents/cursos/python federico/Dia6/Recetas')
     # escribimos el nombre de la carpeta a crear
-    nombre_carpeta = input('Escribe el nombre de la categoria a crear: ')
+    nombre_carpeta = input('Escribe el nombre de la categoria a eliminar: ')
     #unimos con el directorio base para que se cree en donde queremos
     carpeta_eliminada = ruta_base / nombre_carpeta
     #utilizamos el metodo mkdir para crear la nueva carpeta
-    carpeta_eliminada.rmdir()
+    if carpeta_eliminada.exists():
+        
+        carpeta_eliminada.rmdir()
+        
+    else:
+        print('carpeta no encontrada')
      #iteramos sobre cada carpeta dentro de recetas ya que iterdir nos permite iterar los elementos en el directorio especificado ademas utilizamos is_dir para considerar solo esas carpetas
     subcarpetas = [carpeta for carpeta in ruta_base.iterdir() if carpeta.is_dir()]
     # for carpeta in ruta_base.iterdir(): 
@@ -162,7 +169,44 @@ def eliminar_categoria():
     for i , carpeta in enumerate(subcarpetas):
         print(f'{i}.{carpeta.name}')
     
-    system('cls')    
+    
+
+
+
+while True :
+    print(''' Bienvenidos al catologo de recetario
+               elige una opcion 
+          1. leer categorias existentes
+          2. crear tu propia receta
+          3. crear tu categoria de recetas
+          4. elimina una receta existente
+          5. eliminar una categoria \n''')
+    opcion = int(input('Por favor digite su opcion: '))
+    
+    if opcion == 1:
+        leer_categoria()
+        print('\n')
+        system('cls')    
+    elif opcion == 2:
+        crear_receta()
+        print('\n')
+        system('cls')    
+    
+    elif opcion == 3:
+        crear_categoria()
+        print('\n')
+    elif opcion == 4:
+        eliminar_receta()
+        print('\n')
+        system('cls')    
+    elif opcion == 5:
+        eliminar_categoria()
+        print('\n')
+    elif opcion == 6:
+        system('cls')  
+        print('hasta la proxima')  
+        break
+    
     
     
 
