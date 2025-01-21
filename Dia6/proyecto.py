@@ -4,7 +4,7 @@ from os import system
 #este metodo lee las recetas dentro de una categoria especifica
 def leer_categoria():
     #accedo a la ruta principal de mis recetas
-    ruta_base = Path('C:/Users/elver/Documents/cursos/python federico/Dia6/Recetas')
+    ruta_base = Path.cwd()/'Dia6'/'Recetas'
     #iteramos sobre cada carpeta dentro de recetas ya que iterdir nos permite iterar los elementos en el directorio especificado ademas utilizamos is_dir para considerar solo esas carpetas
     subcarpetas = [carpeta for carpeta in ruta_base.iterdir() if carpeta.is_dir()]
     # for carpeta in ruta_base.iterdir(): 
@@ -41,7 +41,7 @@ def leer_categoria():
 
 def crear_receta():
     
-    ruta_base = Path('C:/Users/elver/Documents/cursos/python federico/Dia6/Recetas')
+    ruta_base = Path.cwd()/'Dia6'/'Recetas'
     #iteramos sobre cada carpeta dentro de recetas ya que iterdir nos permite iterar los elementos en el directorio especificado ademas utilizamos is_dir para considerar solo esas carpetas
     subcarpetas = [carpeta for carpeta in ruta_base.iterdir() if carpeta.is_dir()]
     # for carpeta in ruta_base.iterdir(): 
@@ -83,7 +83,7 @@ def crear_receta():
                 
 
 def crear_categoria():
-    ruta_base = Path('C:/Users/elver/Documents/cursos/python federico/Dia6/Recetas')
+    ruta_base = Path.cwd()/'Dia6'/'Recetas'
     # escribimos el nombre de la carpeta a crear
     nombre_carpeta = input('Escribe el nombre de la categoria a crear: ')
     #unimos con el directorio base para que se cree en donde queremos
@@ -106,7 +106,7 @@ def crear_categoria():
         
 def eliminar_receta():
     
-    ruta_base = Path('C:/Users/elver/Documents/cursos/python federico/Dia6/Recetas')
+    ruta_base = Path.cwd()/'Dia6'/'Recetas'
     #iteramos sobre cada carpeta dentro de recetas ya que iterdir nos permite iterar los elementos en el directorio especificado ademas utilizamos is_dir para considerar solo esas carpetas
     subcarpetas = [carpeta for carpeta in ruta_base.iterdir() if carpeta.is_dir()]
     # for carpeta in ruta_base.iterdir(): 
@@ -148,7 +148,8 @@ def eliminar_receta():
                 
 
 def eliminar_categoria():
-    ruta_base = Path('C:/Users/elver/Documents/cursos/python federico/Dia6/Recetas')
+    # ruta_base = Path('C:/Users/elver/Documents/cursos/python federico/Dia6/Recetas')
+    ruta_base = Path.cwd()/'Dia6'/'Recetas'
     # escribimos el nombre de la carpeta a crear
     nombre_carpeta = input('Escribe el nombre de la categoria a eliminar: ')
     #unimos con el directorio base para que se cree en donde queremos
@@ -172,9 +173,11 @@ def eliminar_categoria():
     
 
 
-
+print('*' * 5 + " Bienvenido al administrador de recetas " + '*' * 5)
 while True :
-    print(''' Bienvenidos al catologo de recetario
+    print(Path.cwd())
+    
+    print(''' 
                elige una opcion 
           1. leer categorias existentes
           2. crear tu propia receta
